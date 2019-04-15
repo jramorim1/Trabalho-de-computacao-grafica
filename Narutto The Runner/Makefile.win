@@ -1,0 +1,40 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.9.2
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o obstacle.o player.o vetor.o bg.o
+LINKOBJ  = main.o obstacle.o player.o vetor.o bg.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib32" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -L"C:/Users/jramo/Desktop/SDL-devel-1.2.15-mingw32/SDL-1.2.15/lib" -static-libgcc  -lopengl32 -lglu32  -lglut32 -lwinmm -lgdi32 -lmingw32 -lSDLmain -lSDL -lSDL_image -L"C:/Users/oieus/Documents/trabCG/SDL-1.2.15/lib" -mwindows -lmingw32 -lSDLmain -lSDL -lSDL_image -m32
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++" -I"C:/Users/jramo/Desktop/SDL-devel-1.2.15-mingw32/SDL-1.2.15/include"
+BIN      = GameGS.exe
+CXXFLAGS = $(CXXINCS) -m32 -lopengl32 -lglu32  -lglut32 -lwinmm -lgdi32
+CFLAGS   = $(INCS) -m32 -lopengl32 -lglu32  -lglut32 -lwinmm -lgdi32
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+obstacle.o: obstacle.cpp
+	$(CPP) -c obstacle.cpp -o obstacle.o $(CXXFLAGS)
+
+player.o: player.cpp
+	$(CPP) -c player.cpp -o player.o $(CXXFLAGS)
+
+vetor.o: vetor.cpp
+	$(CPP) -c vetor.cpp -o vetor.o $(CXXFLAGS)
+
+bg.o: bg.cpp
+	$(CPP) -c bg.cpp -o bg.o $(CXXFLAGS)
